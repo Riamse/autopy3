@@ -221,7 +221,7 @@ def create_ext_modules(src_dir):
 
 PACKAGE_NAME = 'autopy'
 PACKAGE_DESCRIPTION = \
-'''AutoPy is a simple, cross-platform GUI automation toolkit for Python. It
+'''AutoPy is a simple, cross-platform GUI automation toolkit for Python 3. It
 includes functions for controlling the keyboard and mouse, finding colors
 and bitmaps on-screen, and displaying alerts -- all in a cross-platform,
 efficient, and simple manner.'''
@@ -234,10 +234,9 @@ create_package_dir(PACKAGE_NAME, PACKAGE_DESCRIPTION, modules_names)
 setup(name=PACKAGE_NAME,
       version='0.51',
       author='Michael Sanders',
-      author_email='michael+autopy [at] msanders [dot] com',
-      url='http://autopy.org',
+      url='https://github.com/Riamse/autopy3',
       license='MIT',
-      description='A simple, cross-platform GUI automation toolkit for Python.',
+      description='A simple, cross-platform GUI automation toolkit for Python 3.',
       long_description=PACKAGE_DESCRIPTION,
       platforms=('Mac OS X 10.5+', 'X11 with XTest Extension', 'Windows'),
       packages=[PACKAGE_NAME],
