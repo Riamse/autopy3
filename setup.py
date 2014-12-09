@@ -219,7 +219,7 @@ def create_ext_modules(src_dir):
                                      extra_link_args=extra_link_args))
     return ext_modules
 
-PACKAGE_NAME = 'autopy3'
+PACKAGE_NAME = 'autopy'
 PACKAGE_DESCRIPTION = \
 '''AutoPy is a simple, cross-platform GUI automation toolkit for Python. It
 includes functions for controlling the keyboard and mouse, finding colors
