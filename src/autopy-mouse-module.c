@@ -77,14 +77,14 @@ PyMODINIT_FUNC initmouse(void)
 	mod = Py_InitModule3("mouse", MouseMethods,
 	                               "autopy module for working with the mouse");
 #endif
-	if (mod == NULL) return; /* Error */
+	if (mod == NULL) return NULL; /* Error */
 
 	/* Add mouse button constants for click_mouse(). */
 	if (PyModule_AddIntMacro(mod, LEFT_BUTTON) < 0 ||
 		PyModule_AddIntMacro(mod, RIGHT_BUTTON) < 0 ||
 		PyModule_AddIntMacro(mod, CENTER_BUTTON) < 0) {
 		PyErr_SetString(PyExc_ValueError, "Error adding constants to mouse module");
-		return;
+		return NULL;
 	}
 
 	deadbeef_srand_time();
