@@ -76,7 +76,7 @@ PyMODINIT_FUNC initkey(void)
 	                               "autopy module for working with the "
 	                               "keyboard");
 #endif
-	if (mod == NULL) return; /* Error */
+	if (mod == NULL) return NULL; /* Error */
 
 	/* Needed for type_string(). */
 	deadbeef_srand_time();
@@ -117,7 +117,7 @@ PyMODINIT_FUNC initkey(void)
 		PyModule_AddIntMacro(mod, K_SHIFT) < 0 ||
 		PyModule_AddIntMacro(mod, K_CAPSLOCK) < 0) {
 		PyErr_SetString(PyExc_ValueError, "Error adding keycode constants");
-		return;
+		return NULL;
 	}
 #ifdef PYTHREE
 	return mod;
