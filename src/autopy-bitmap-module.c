@@ -67,7 +67,7 @@ static PyObject *bitmap_capture_screen(PyObject *self, PyObject *arg)
 	MMSize displaySize = getMainDisplaySize();
 
 	if (arg == NULL || arg == Py_None) {
-		rect = MMRectMake(0, 0, displaySize.width, displaySize.height);
+		rect = MMRectMake((size_t)GetSystemMetrics(SM_XVIRTUALSCREEN), (size_t)GetSystemMetrics(SM_YVIRTUALSCREEN), (size_t)GetSystemMetrics(SM_CXVIRTUALSCREEN), (size_t)GetSystemMetrics(SM_CYVIRTUALSCREEN));
 	} else {
 		if (!PyArg_ParseTuple(arg, "(kk)(kk)", &rect.origin.x,
 		                                       &rect.origin.y,
