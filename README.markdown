@@ -35,6 +35,8 @@ by Michael Sanders
 
 AutoPy is a simple, cross-platform GUI automation toolkit for Python. It includes functions for controlling the keyboard and mouse, finding colors and bitmaps on-screen, and displaying alerts -- all in a cross-platform, efficient, and simple manner.
 
+This fork is Python 3 compatible.
+
 <div id="how-so"></div>
 
 ### How so?
@@ -77,16 +79,16 @@ Installers for Windows are available here: http://pypi.python.org/pypi/autopy/.
 
 For every other OS, the simplest method is to use the `easy_install` utility:
 
-	easy_install autopy
+	easy_install autopy3
 
 Another option is to compile from the latest source on the GitHub repository:
 
-	$ git clone git://github.com/msanders/autopy.git
-	$ cd autopy
+	$ git clone git://github.com/Riamse/autopy3.git
+	$ cd autopy3
 	$ python setup.py build
 	# python setup.py install
 
-When building from source, make sure to `cd` out of the autopy directory before attempting to use AutoPy or else it may fail on an `ImportError` due to Python's relative imports.
+When building from source, make sure to `cd` out of the autopy3 directory before attempting to use AutoPy or else it may fail on an `ImportError` due to Python's relative imports.
 
 <div id="autopy-helloworld"></div>
 
@@ -94,7 +96,7 @@ When building from source, make sure to `cd` out of the autopy directory before 
 
 The following is the full source for a "hello world" script in autopy. Running this code will cause an alert dialog to appear on every major platform:
 
-	import autopy
+	import autopy3 as autopy
 	def hello_there_world():
 	    autopy.alert.alert("Hello, world")
 	hello_there_world()
@@ -109,22 +111,22 @@ The following is the full source for a "hello world" script in autopy. Running t
 
 ### Controlling the Mouse
 
-AutoPy includes a number of functions for controlling the mouse. For a full list, consult the [API Reference](http://www.autopy.org/documentation/api-reference/mouse.html). This short tutorial, however, only gives you a taste of two: `autopy.mouse.move()` and `autopy.mouse.smooth_move()`. These functions do exactly what they seem; for instance, to immediately "teleport" the mouse to the top left corner of the screen:
+AutoPy includes a number of functions for controlling the mouse. For a full list, consult the [API Reference](http://www.autopy.org/documentation/api-reference/mouse.html). This short tutorial, however, only gives you a taste of two: `autopy3.mouse.move()` and `autopy3.mouse.smooth_move()`. These functions do exactly what they seem; for instance, to immediately "teleport" the mouse to the top left corner of the screen:
 
-	>>> import autopy
+	>>> import autopy3 as autopy
 	>>> autopy.mouse.move(1, 1)
 
 
-Note that you are able to use the module `autopy.mouse` despite only importing `autopy`. This is because the grand `autopy` module imports all of the modules in the autopy package, so you don't have to.
+Note that you are able to use the module `autopy3.mouse` despite only importing `autopy3`. This is because the grand `autopy3` module imports all of the modules in the autopy3 package, so you don't have to.
 
 To move the mouse a bit more realistically, we could use:
 
-	>>> import autopy
+	>>> import autopy3 as autopy
 	>>> autopy.mouse.smooth_move(1, 1)
 
 Even better, we could write our own function to move the mouse across the screen as a sine wave:
 
-	import autopy
+	import autopy3 as autopy
 	import math
 	import time
 	import random
@@ -154,44 +156,44 @@ Pretty cool, huh?
 
 ### Working with Bitmaps
 
-All of autopy's bitmap routines can be found in the module `autopy.bitmap` (more specifically, most are found in the class `autopy.bitmap.Bitmap`). A useful way to explore autopy is to use Python's built-in `help()` function, for example in `help(autopy.bitmap.Bitmap)`. All of autopy's functions are documented with descriptive docstrings, so this should show a nice overview.
+All of autopy3's bitmap routines can be found in the module `autopy3.bitmap` (more specifically, most are found in the class `autopy3.bitmap.Bitmap`). A useful way to explore autopy3 is to use Python's built-in `help()` function, for example in `help(autopy3.bitmap.Bitmap)`. All of autopy3's functions are documented with descriptive docstrings, so this should show a nice overview.
 
-There are currently three ways to load a bitmap in autopy: 1.) by taking a screenshot, 2.) by loading a file, or 3.) by parsing a string. The first is probably the most obvious, so I'll start by showing that:
+There are currently three ways to load a bitmap in autopy3: 1.) by taking a screenshot, 2.) by loading a file, or 3.) by parsing a string. The first is probably the most obvious, so I'll start by showing that:
 
-	>>> import autopy
+	>>> import autopy3 as autopy
 	>>> autopy.bitmap.capture_screen()
 	<Bitmap object at 0x12278>
 
 This takes a screenshot of the main screen, copies it to a bitmap, displays its memory address, and then immediately destroys it. Let's do something more useful, like look at its pixel data:
 
-	>>> import autopy
+	>>> import autopy3 as autopy
 	>>> autopy.bitmap.capture_screen().get_color(1, 1)
 	15921906
 
 AutoPy uses a coordinate system with its origin starting at the top-left, so this statement should return the color of pixel at the top-left corner of the screen. The number shown looks a bit unrecognizable, though, but we can fix that:
 
-	>>> import autopy
+	>>> import autopy3 as autopy
 	>>> hex(autopy.bitmap.capture_screen().get_color(1, 1))
 	'0xF2F2F2'
 
 This is obviously an RGB hexadecimal value, identical those used in HTML and CSS. We could also have done: 
 
-	>>> import autopy
+	>>> import autopy3 as autopy
 	>>> autopy.color.hex_to_rgb(autopy.screen.get_color(1, 1))
 	(242, 242, 242)
 
-which converts that hex value to a tuple of `(r, g, b)` values. (Note that `autopy.screen.get_color()`, used here, is merely a more convenient and efficient version of `autopy.bitmap.capture_screen().get_color()`.)
+which converts that hex value to a tuple of `(r, g, b)` values. (Note that `autopy3.screen.get_color()`, used here, is merely a more convenient and efficient version of `autopy3.bitmap.capture_screen().get_color()`.)
 
 To save the screen capture to a file, we can use:
 
-	>>> import autopy
+	>>> import autopy3 as autopy
 	>>> autopy.bitmap.capture_screen().save('screengrab.png')
 
 The filetype is either parsed automatically from the filename, or given as an optional parameter. AutoPy currently only supports the BMP and PNG filetypes, though, as those are really all that are practical for its purpose.
 
 Loading a bitmap is done essentially the same way, only from a class method:
 
-	>>> import autopy
+	>>> import autopy3 as autopy
 	>>> autopy.bitmap.Bitmap.open('i-am-a-monkey-and-i-like-it.png')
 	<Bitmap object at 0x1001d5378>
 
@@ -207,7 +209,7 @@ This is not recommended for large bitmaps (a screenshot, for instance, is obviou
 
 Aside from analyzing a bitmap's pixel data, the main use for loading a bitmap is finding it on the screen or inside another bitmap. For example, the following prints the coordinates of the first monkey found in a barrel of monkeys (scanned from left to right, top to bottom):
 
-	import autopy
+	import autopy3 as autopy
 	def where_is_the_monkey():
 		"""Look for the monkey. Tell me if you found it."""
 		monkey = autopy.bitmap.Bitmap.open('monkey.png')
@@ -225,7 +227,7 @@ As I hope you can see, these functions are enormously useful and have a number o
 
 ## Closing & API Reference
 
-Hope you enjoy using autopy! For a more in depth overview, I've attempted to make the [API Reference](http://www.autopy.org/documentation/api-reference/) as complete and approachable as possible.
+Hope you enjoy using autopy3! For a more in depth overview, I've attempted to make the [API Reference](http://www.autopy.org/documentation/api-reference/) as complete and approachable as possible.
 
 <div id="autopy-license"></div>
 
