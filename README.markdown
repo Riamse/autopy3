@@ -1,6 +1,5 @@
-[![PyPI version](https://pypip.in/version/autopy/badge.svg)](https://pypi.python.org/pypi/autopy3/)
-[![PyPI downloads](https://pypip.in/status/autopy/badge.svg)](https://pypi.python.org/pypi/autopy3/)
-[![PyPI status](https://pypip.in/download/autopy/badge.svg)](https://pypi.python.org/pypi/autopy3/)
+[![PyPI version](https://img.shields.io/pypi/v/autopy.svg)](https://pypi.python.org/pypi/autopy3/)
+[![PyPI status](https://img.shields.io/pypi/dm/autopy.svg)](https://pypi.python.org/pypi/autopy3/)
 
 AutoPy Introduction and Tutorial
 =================================
